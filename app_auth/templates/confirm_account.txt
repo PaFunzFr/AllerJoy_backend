@@ -1,0 +1,5 @@
+Confirm this email
+
+To complete the registration for {{ user }} please click the link below:
+
+Activate account: {{ activation_url }}
