@@ -23,6 +23,7 @@ echo "PostgreSQL is ready - continuing..."
 python manage.py collectstatic --noinput
 python manage.py makemigrations
 python manage.py migrate
+python manage.py seed_allergens
 
 # Automatically create a Django superuser if it doesn't exist yet.
 # The username, email, and password are read from environment variables.

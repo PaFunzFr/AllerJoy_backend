@@ -1,0 +1,133 @@
+[
+  {
+    "name": "Milch",
+    "category": "allergy",
+    "keywords": [
+      "Milch", "Magermilchpulver", "Vollmilchpulver", "Trockenmilch",
+      "Molke", "Molkenpulver", "Molkeneiweiß", "Molkenprotein", "Casein",
+      "Caseinat", "Lactalbumin", "Lactoglobulin", "Sahne", "Rahm",
+      "Butter", "Butteröl", "Buttermilch", "Joghurt", "Kefir", "Käse",
+      "Quark", "Topfen", "Crème fraîche", "Schmand", "Kondensmilch",
+      "Mascarpone", "Ghee"
+    ]
+  },
+  {
+    "name": "Milch",
+    "category": "intolerance",
+    "keywords": [
+      "Laktose"
+    ]
+  },
+  {
+    "name": "Gluten",
+    "category": "allergy",
+    "keywords": [
+      "Weizen", "Roggen", "Gerste", "Hafer", "Dinkel", "Emmer", "Einkorn",
+      "Kamut", "Triticale", "Weizeneiweiß", "Gluten"
+    ]
+  },
+  {
+    "name": "Gluten",
+    "category": "intolerance",
+    "keywords": [
+      "Weizenmehl", "Hartweizengrieß", "Grieß", "Semolina", "Bulgur",
+      "Couscous", "Seitan", "Graupen", "Malz", "Gerstenmalz", "Malzextrakt",
+      "Malzessig", "Bierhefe", "Hydrolysiertes Weizenprotein",
+      "Texturiertes Pflanzenprotein", "Paniermehl", "Brotmehl", "Stärke"
+    ]
+  },
+  {
+    "name": "Erdnuss",
+    "category": "allergy",
+    "keywords": [
+      "Erdnüsse", "Erdnussbutter", "Erdnussöl", "Erdnussmehl", "Arachis",
+      "Arachisöl", "Groundnut", "Peanut", "Satay-Sauce", "Goober"
+    ]
+  },
+  {
+    "name": "Schalenfrüchte",
+    "category": "allergy",
+    "keywords": [
+      "Haselnuss", "Walnuss", "Mandel", "Cashew", "Pistazie", "Pecannuss",
+      "Paranuss", "Macadamia", "Queenslandnuss", "Nussmus", "Nussbutter",
+      "Nussöl", "Marzipan", "Nougat", "Gianduja", "Praliné", "Mandelmehl"
+    ]
+  },
+  {
+    "name": "Ei",
+    "category": "allergy",
+    "keywords": [
+      "Ei", "Vollei", "Eigelb", "Eiklar", "Albumin", "Ovalbumin",
+      "Lecithin", "Lysozym", "Mayonnaise", "Aioli", "Meringue", "Eierlikör", "Panade"
+    ]
+  },
+  {
+    "name": "Soja",
+    "category": "allergy",
+    "keywords": [
+      "Sojabohne", "Sojamehl", "Sojamilch", "Sojaprotein", "Sojalecithin",
+      "Texturiertes Sojaprotein", "Edamame", "Miso", "Tofu", "Tempeh",
+      "Sojasauce", "Shoyu", "Tamari", "Natto"
+    ]
+  },
+  {
+    "name": "Fisch",
+    "category": "allergy",
+    "keywords": [
+      "Fisch", "Fischöl", "Fischmehl", "Surimi", "Anchovis", "Sardellen",
+      "Fischsauce", "Omega-3"
+    ]
+  },
+  {
+    "name": "Krebstiere & Weichtiere",
+    "category": "allergy",
+    "keywords": [
+      "Garnele", "Shrimp", "Prawn", "Krabbe", "Hummer", "Languste",
+      "Muschel", "Auster", "Schnecke", "Tintenfisch", "Calamari", "Sepia"
+    ]
+  },
+  {
+    "name": "Histamin",
+    "category": "intolerance",
+    "keywords": [
+      "Gereifter Käse", "Salami", "Schinken", "Geräucherter Fisch",
+      "Thunfisch", "Rotwein", "Wein", "Bier", "Sauerkraut", "Sojasauce",
+      "Hefeextrakt", "Tomaten", "Aubergine", "Spinat", "Avocado", "Essig",
+      "Fertiggerichte"
+    ]
+  },
+  {
+    "name": "Fruktose / Sorbit / Polyole",
+    "category": "intolerance",
+    "keywords": [
+      "Fruchtzucker", "Honig", "Apfelsaft", "Birnensaft", "Maissirup",
+      "HFCS", "Agavendicksaft", "Sorbit", "Mannit", "Xylit", "Maltit",
+      "Isomalt", "Erythrit"
+    ]
+  },
+  {
+    "name": "Senf",
+    "category": "allergy",
+    "keywords": ["Senfkörner", "Senfpulver", "Senfmehl", "Mostrich"]
+  },
+  {
+    "name": "Sesam",
+    "category": "allergy",
+    "keywords": ["Sesam", "Tahini", "Gomasio", "Sesamöl"]
+  },
+  {
+    "name": "Sellerie",
+    "category": "allergy",
+    "keywords": ["Sellerie", "Selleriesalz", "Staudensellerie", "Knollensellerie"]
+  },
+  {
+    "name": "Lupine",
+    "category": "allergy",
+    "keywords": ["Lupinenmehl", "Lupinenprotein"]
+  },
+  {
+    "name": "Sulfite",
+    "category": "intolerance",
+    "keywords": ["Schwefeldioxid", "Natriumsulfit", "Natriumhydrogensulfit", "Kaliummetabisulfit"]
+  }
+]

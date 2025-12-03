@@ -1,21 +1,21 @@
 from django.db import models
 from app_auth.models import UserProfile
 from app_groups.models import Group
-from app_allergies.models import Allergen
+from app_allergens.models import Allergen
 
 class Recipe(models.Model):
     title = models.CharField(max_length=255)
     link = models.URLField()
     description = models.TextField(blank=True)
     creator = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='created_recipes')
-    group = models.ManyToManyField(Group, on_delete=models.CASCADE, related_name='recipes')
+    group = models.ManyToManyField(Group, related_name='recipes', blank=True)
     allergens = models.ManyToManyField(Allergen, blank=True, related_name='recipes')
     
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.title} ({self.group.name})"
+        return {self.title}
     
     def get_allergens(self):
         return self.allergens.all()
