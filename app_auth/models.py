@@ -39,6 +39,9 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
+    def get_allergens(self):
+        return self.allergens.all()
+
 
 class CustomProfile(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='custom_profiles')
@@ -49,3 +52,6 @@ class CustomProfile(models.Model):
 
     def __str__(self):
         return self.nickname
+
+    def get_allergens(self):
+        return self.allergens.all()
