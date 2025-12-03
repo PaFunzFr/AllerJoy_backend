@@ -1,0 +1,44 @@
+# OS / IDE / VCS
+.DS_Store
+.git/
+.idea/
+.vscode/
+.sass-cache
+.cache
+.vagrant/
+
+# Python
+*.pyc
+*.pyo
+*.mo
+*.egg-info
+__pycache__/
+db.sqlite3
+
+# Django
+.env
+.env/
+venv/
+.venv/
+env/
+logs/
+media/
+static/
+
+# Frontend / Node
+node_modules/
+*.log
+*.css.map
+build/
+
+# Django project-specific
+core/settings/local.py
+
+# Docs / Dist
+dist/
+docs/
+stats/
+
+# Docker
+Dockerfile
+docker-compose.override.yml
