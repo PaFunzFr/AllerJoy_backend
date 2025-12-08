@@ -49,6 +49,9 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'django_rq',
     'app_auth',
+    'app_allergens',
+    'app_groups',
+    'app_recipes'
 ]
 
 MIDDLEWARE = [
@@ -89,10 +92,10 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("DB_NAME", default="collabeya_db"),
-        "USER": os.environ.get("DB_USER", default="collabeya_user"),
+        "NAME": os.environ.get("DB_NAME", default="allerjoy_db"),
+        "USER": os.environ.get("DB_USER", default="allerjoy_user"),
         "PASSWORD": os.environ.get("DB_PASSWORD", default="supersecretpassword"),
-        "HOST": os.environ.get("DB_HOST", default="collabeya_database"),
+        "HOST": os.environ.get("DB_HOST", default="allerjoy_database"),
         "PORT": os.environ.get("DB_PORT", default=5432)
     }
 }
@@ -104,7 +107,7 @@ CACHES = {
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient"
         },
-        "KEY_PREFIX": "collabeya"
+        "KEY_PREFIX": "allerjoy"
     }
 }
 

@@ -20,9 +20,6 @@ class Command(BaseCommand):
             allergen, created = Allergen.objects.get_or_create(
                 name=item["name"],
                 category=item.get("category", "allergy"),
-                defaults={
-                    "severity": item.get("severity", "medium"),
-                }
             )
 
             if created:

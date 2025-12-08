@@ -1,9 +1,7 @@
-version: "3.9"
-
 services:
   db:
     image: postgres:16-alpine
-    container_name: collabeya_database
+    container_name: allerjoy_database
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
@@ -18,7 +16,7 @@ services:
 
   redis:
     image: redis:7-alpine
-    container_name: collabeya_redis
+    container_name: allerjoy_redis
     volumes:
       - redis_data:/data
     command: ["redis-server", "--appendonly", "yes"]
@@ -27,13 +25,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: collabeya_backend
+    container_name: allerjoy_backend
     environment:
       PYTHONUNBUFFERED: "1"
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
-      DB_HOST: collabeya_database
+      DB_HOST: allerjoy_database
       DB_PORT: 5432
       SECRET_KEY: ${SECRET_KEY}
     depends_on:
@@ -43,7 +41,7 @@ services:
         condition: service_started
     volumes:
       - media_data:/app/media
-      - collabeya_static:/app/static
+      - allerjoy_static:/app/static
     ports:
       - "8000:8000"
     restart: unless-stopped
@@ -52,12 +50,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: django_worker_collabeya
+    container_name: django_worker_allerjoy
     environment:
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
-      DB_HOST: collabeya_database
+      DB_HOST: allerjoy_database
       DB_PORT: 5432
       SECRET_KEY: ${SECRET_KEY}
     command: python manage.py rqworker default
@@ -70,6 +68,6 @@ services:
 
 volumes:
   media_data:
-  collabeya_static:
+  allerjoy_static:
   postgres_data:
   redis_data:

@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from app_auth.models import UserProfile
 from django.contrib.auth.models import User
-from app_auth.models import UserProfile, USER_TYPES
+from app_auth.models import UserProfile
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 MAX_FILE_SIZE = 2 * 1024 * 1024

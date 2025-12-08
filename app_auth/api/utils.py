@@ -44,7 +44,7 @@ def queue_send_welcome_mail(user):
     django_rq.get_queue('default').enqueue(
         send_user_email,
         user,
-        subject="Welcome to Collabeya",
+        subject="Welcome to AllerJoy",
         template_name="welcome_message",
         link_name="",
         link_value=""
