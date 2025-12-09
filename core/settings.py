@@ -24,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config("SECRET_KEY")
-DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = [h.strip() for h in config('ALLOWED_HOSTS', default='localhost').split(',')]
-CSRF_TRUSTED_ORIGINS = [h.strip() for h in config('CSRF_TRUSTED_ORIGINS', default='http://localhost').split(',')]
-CORS_ALLOWED_ORIGINS = [h.strip() for h in config('CORS_ALLOWED_ORIGINS', default='http://localhost').split(',')]
+DEBUG = config('DEBUG', default=True, cast=bool)
+ALLOWED_HOSTS = [h.strip() for h in config('ALLOWED_HOSTS', default='127.0.0.1,localhost').split(',')]
+CSRF_TRUSTED_ORIGINS = [h.strip() for h in config('CSRF_TRUSTED_ORIGINS', default='http://127.0.0.1:8000,http://localhost:8000,http://127.0.0.1:5500,http://localhost:5500').split(',')]
+CORS_ALLOWED_ORIGINS = [h.strip() for h in config('CORS_ALLOWED_ORIGINS', default='http://127.0.0.1:8000,http://localhost:8000,http://127.0.0.1:5500,http://localhost:5500').split(',')]
 FRONTEND_URL = config('FRONTEND_URL', default='localhost')
 
 RQ_SHOW_ADMIN_LINK = True

@@ -13,6 +13,8 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+    env_file:
+      - .env
 
   redis:
     image: redis:7-alpine
@@ -40,11 +42,14 @@ services:
       redis:
         condition: service_started
     volumes:
+      - .:/usr/src/app  
       - media_data:/app/media
       - allerjoy_static:/app/static
     ports:
       - "8000:8000"
     restart: unless-stopped
+    env_file:
+      - .env
 
   worker:
     build:
@@ -63,8 +68,11 @@ services:
       redis:
         condition: service_started
     volumes:
+      - .:/usr/src/app  
       - media_data:/app/media
     restart: unless-stopped
+    env_file:
+      - .env
 
 volumes:
   media_data:

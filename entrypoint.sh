@@ -89,6 +89,7 @@ else
     echo "Starting Gunicorn (production)..."
     exec gunicorn core.wsgi:application \
         --bind 0.0.0.0:8000 \
+        --reload \
         --workers 3 \
         --worker-class gthread \
         --threads 4 \

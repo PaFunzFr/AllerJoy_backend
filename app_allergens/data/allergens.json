@@ -97,12 +97,57 @@
     ]
   },
   {
-    "name": "Fruktose / Sorbit / Polyole",
+    "name": "Fruktose",
     "category": "intolerance",
     "keywords": [
-      "Fruchtzucker", "Honig", "Apfelsaft", "Birnensaft", "Maissirup",
-      "HFCS", "Agavendicksaft", "Sorbit", "Mannit", "Xylit", "Maltit",
-      "Isomalt", "Erythrit"
+      "Fruktose",
+      "Fruchtzucker",
+      "Honig",
+      "Agavendicksaft",
+      "Maissirup",
+      "HFCS",
+      "Apfelsaft",
+      "Birnensaft",
+      "Apfel",
+      "Birne",
+      "Mango",
+      "Wassermelone",
+      "Kirschen",
+      "Trauben",
+      "Rosinen",
+      "Feigen",
+      "Pflaumen",
+      "Datteln"
+    ]
+  },
+  {
+    "name": "Sorbit",
+    "category": "intolerance",
+    "keywords": [
+      "Sorbit",
+      "Sorbitol",
+      "E420",
+      "trockenfrüchte",
+      "Pflaumen",
+      "Birnen",
+      "Äpfel",
+      "Aprikosen"
+    ]
+  },
+  {
+    "name": "Polyole",
+    "category": "intolerance",
+    "keywords": [
+      "Polyole",
+      "Zuckeralkohole",
+      "Xylit",
+      "Mannit",
+      "Mannitol",
+      "Maltit",
+      "Maltitol",
+      "Isomalt",
+      "Erythrit",
+      "Erythritol"
     ]
   },
   {

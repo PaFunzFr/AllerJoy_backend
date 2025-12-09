@@ -6,7 +6,7 @@ LABEL version="1.0"
 LABEL description="Python 3.12 (Linux) Alpine 3.21"
 
 # install image-folder
-WORKDIR /app
+WORKDIR /usr/src/app
 
 COPY . .
 
