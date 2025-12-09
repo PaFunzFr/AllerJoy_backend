@@ -181,6 +181,7 @@ DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='webmaster@localhost')
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication', 
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
