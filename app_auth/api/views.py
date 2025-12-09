@@ -1,6 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, generics
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from django.contrib.auth.tokens import default_token_generator
@@ -14,13 +14,14 @@ from decouple import config
 User = get_user_model()
 
 from .authentications import CookieJWTAuthentication
+from app_auth.models import CustomProfile
 from .serializers import (
     RegistrationSerializer,
     RequestPasswordResetSerializer,
     ConfirmPasswordSerializer,
-    LoginSerializer
+    LoginSerializer,
+    CustomProfileSerializer
 )
-
 
 class RegisterView(APIView):
     """
@@ -237,3 +238,12 @@ class LogoutView(APIView):
         response.delete_cookie('refresh_token')
 
         return response
+
+
+class CustomProfileView(generics.ListCreateAPIView):
+    serializer_class = CustomProfileSerializer
+    queryset= CustomProfile.objects.all()
+    permission_classes=[]
+
+    def get_queryset(self):
+        return CustomProfile.objects.filter(created_by=self.request.user)

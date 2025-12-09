@@ -1,7 +1,10 @@
 from rest_framework import serializers
 from app_auth.models import UserProfile
+from app_allergens.api.serializers import CustomProfileAllergenSerializer
+from app_allergens.models import CustomProfileAllergen
 from django.contrib.auth.models import User
-from app_auth.models import UserProfile
+from app_auth.models import UserProfile, CustomProfile
+from app_groups.models import Group
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 MAX_FILE_SIZE = 2 * 1024 * 1024
@@ -101,3 +104,44 @@ class LoginSerializer(TokenObtainPairSerializer):
         # Authenticate using JWT
         data = super().validate({"username": user.username, "password": password})
         return data
+
+
+class CustomProfileSerializer(serializers.ModelSerializer):
+    allergens = CustomProfileAllergenSerializer(many=True, required=False)
+    groups = serializers.PrimaryKeyRelatedField(
+        queryset=Group.objects.all(),
+        many=True,
+        required=False
+    )
+
+    class Meta:
+        model = CustomProfile
+        fields = ['id', 'nickname', 'groups', 'created_at', 'allergens', 'created_by']
+        read_only_fields = ['id', 'created_at', 'created_by']
+
+    def validate(self, attrs):
+        nickname = attrs.get('nickname')
+        created_by = self.context['request'].user
+
+        if CustomProfile.objects.filter(nickname=nickname, created_by=created_by).exists():
+            raise serializers.ValidationError("This profile/nickname already exists")
+
+        return attrs
+
+    def create(self, validated_data):
+        allergens_data = validated_data.pop('allergens', [])
+        groups_data = validated_data.pop('groups', [])
+        created_by = self.context['request'].user
+
+        profile = CustomProfile.objects.create(created_by=created_by, **validated_data)
+
+        if groups_data:
+            profile.groups.set(groups_data)
+
+        for allergen_data in allergens_data:
+            CustomProfileAllergen.objects.create(
+                custom_profile=profile, 
+                **allergen_data
+            )
+
+        return profile

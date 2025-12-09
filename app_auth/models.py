@@ -41,3 +41,6 @@ class CustomProfile(models.Model):
 
     def get_allergens(self):
         return CustomProfileAllergen.objects.filter(custom_profile=self)
+    
+    class Meta:
+        unique_together = ("created_by", "nickname")

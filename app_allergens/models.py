@@ -33,7 +33,7 @@ class AllergenKeyword(models.Model):
 
 
 class UserAllergen(models.Model):
-    user_profile = models.ForeignKey("app_auth.UserProfile", on_delete=models.CASCADE)
+    user_profile = models.ForeignKey("app_auth.UserProfile", on_delete=models.CASCADE, related_name="allergens" )
     allergen = models.ForeignKey("app_allergens.Allergen", on_delete=models.CASCADE)
     severity = models.CharField(max_length=10, choices=SEVERITY_CHOICES, default="medium")
 
@@ -42,7 +42,7 @@ class UserAllergen(models.Model):
 
 
 class CustomProfileAllergen(models.Model):
-    custom_profile = models.ForeignKey("app_auth.CustomProfile", on_delete=models.CASCADE)
+    custom_profile = models.ForeignKey("app_auth.CustomProfile", on_delete=models.CASCADE, related_name="allergens" )
     allergen = models.ForeignKey("app_allergens.Allergen", on_delete=models.CASCADE)
     severity = models.CharField(max_length=10, choices=SEVERITY_CHOICES, default="medium")
 
