@@ -107,41 +107,54 @@ class LoginSerializer(TokenObtainPairSerializer):
 
 
 class CustomProfileSerializer(serializers.ModelSerializer):
-    allergens = CustomProfileAllergenSerializer(many=True, required=False)
-    groups = serializers.PrimaryKeyRelatedField(
-        queryset=Group.objects.all(),
-        many=True,
-        required=False
+    allergens = serializers.SerializerMethodField(read_only=True)
+    add_allergens = CustomProfileAllergenSerializer(
+        many=True, write_only=True, required=False
     )
 
     class Meta:
         model = CustomProfile
-        fields = ['id', 'nickname', 'groups', 'created_at', 'allergens', 'created_by']
-        read_only_fields = ['id', 'created_at', 'created_by']
+        fields = ['id', 'nickname', 'groups', 'created_at', 'created_by', 'allergens', 'add_allergens']
+        read_only_fields = ['id', 'created_at', 'created_by', 'allergens']
 
     def validate(self, attrs):
-        nickname = attrs.get('nickname')
-        created_by = self.context['request'].user
+        request = self.context["request"]
 
-        if CustomProfile.objects.filter(nickname=nickname, created_by=created_by).exists():
-            raise serializers.ValidationError("This profile/nickname already exists")
+
+        nickname = attrs.get("nickname")
+        if nickname is None:
+            return attrs
+
+        exists = CustomProfile.objects.filter(
+            nickname=nickname,
+            created_by=request.user
+        ).exists()
+
+        if exists:
+            raise serializers.ValidationError({
+                "nickname": "This nickname already exists for your profiles."
+            })
 
         return attrs
 
+    def get_allergens(self, obj):
+        allergens = obj.profile_allergens.all()
+        return CustomProfileAllergenSerializer(allergens, many=True).data
+
     def create(self, validated_data):
-        allergens_data = validated_data.pop('allergens', [])
-        groups_data = validated_data.pop('groups', [])
-        created_by = self.context['request'].user
+        request = self.context["request"]
+        allergens_data = request.data.get("allergens", [])
 
-        profile = CustomProfile.objects.create(created_by=created_by, **validated_data)
+        profile = CustomProfile.objects.create(
+            created_by=request.user,
+            **validated_data
+        )
 
-        if groups_data:
-            profile.groups.set(groups_data)
-
-        for allergen_data in allergens_data:
+        for item in allergens_data:
             CustomProfileAllergen.objects.create(
-                custom_profile=profile, 
-                **allergen_data
+                custom_profile=profile,
+                allergen_id=item["allergen"],
+                severity=item.get("severity", "medium")
             )
 
         return profile

@@ -105,17 +105,15 @@ class UserAllergenDetailSerializer(serializers.ModelSerializer):
 
 
 class CustomProfileAllergenSerializer(serializers.ModelSerializer):
-    allergen_name = serializers.SerializerMethodField(read_only=True)
-    category = serializers.SerializerMethodField(read_only=True)
+    allergen_detail = AllergensSerializer(source="allergen", read_only=True)
     allergen = serializers.PrimaryKeyRelatedField(
-        queryset=Allergen.objects.all()
+        queryset=Allergen.objects.all(),
     )
     custom_profile = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         model = CustomProfileAllergen
-        fields = ['id', 'custom_profile', 'allergen', 'allergen_name', 'severity', 'category']
-        read_only_fields = ['id', 'custom_profile', 'allergen_name', 'category']
+        fields = ["id", "allergen", "severity", "allergen_detail", "custom_profile"]
 
     def validate(self, attrs):
         allergen = attrs.get('allergen')

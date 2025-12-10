@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app_allergens.models import Allergen, AllergenKeyword
+from app_allergens.models import Allergen, AllergenKeyword, UserAllergen
 
 class AllergenKeywordInline(admin.TabularInline):
     model = AllergenKeyword
@@ -18,3 +18,8 @@ class AllergenAdmin(admin.ModelAdmin):
         return ", ".join(k.keyword for k in obj.keywords.all())
     
     keywords_list.short_description = "Keywords"
+
+@admin.register(UserAllergen)
+class UserAllergenAdmin(admin.ModelAdmin):
+    list_display = ('user_profile', 'allergen', 'severity')
+    search_fields = ('user_profile', 'allergen')
