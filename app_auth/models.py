@@ -16,7 +16,7 @@ def profile_picture_path(instance, filename):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     groups = models.ManyToManyField(Group, blank=True, related_name='members')
-    avatar = models.ImageField(upload_to=profile_picture_path, blank=True, null=True, storage=OverwriteStorage())
+    avatar = models.ImageField(upload_to=profile_picture_path, blank=True, storage=OverwriteStorage())
     created_at = models.DateTimeField(auto_now_add=True)
 
     allergens = models.ManyToManyField(Allergen, through=UserAllergen, related_name="profiles", blank=True)
